@@ -13,18 +13,25 @@
     "seed": "npx sequelize-cli db:seed:all",
     "db:reset": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate"
   },
-  "keywords": ["nodejs", "postgresql", "sequelize", "jwt", "bullmq", "docker"],
+  "keywords": [
+    "nodejs",
+    "postgresql",
+    "sequelize",
+    "jwt",
+    "bullmq",
+    "docker"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
-    "bullmq": "^5.66.4",
+    "bullmq": "^5.66.5",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-validator": "^7.3.1",
     "helmet": "^8.1.0",
-    "ioredis": "^5.8.2",
+    "ioredis": "^5.9.2",
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.16.3",
     "sequelize": "^6.37.7"
