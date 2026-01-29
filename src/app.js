@@ -45,6 +45,8 @@ app.use("/api/volunteers", authenticate, volunteerRoutes);
 app.use("/api/participations", authenticate, participationRoutes);
 app.use("/api/tickets", authenticate, ticketRoutes);
 app.use("/api/sponsors", authenticate, sponsorRoutes);
+app.use("/api/attendance", authenticate, require("./routes/attendanceRoutes"));
+app.use("/api/leads", authenticate, require("./routes/leadRoutes"));
 
 // Protected route example
 app.get("/api/me", authenticate, (req, res) => {
