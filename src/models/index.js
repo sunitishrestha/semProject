@@ -19,88 +19,109 @@ const Attendance = require("./attendance");
 // ====================
 
 // User ↔ RefreshToken
-User.hasMany(RefreshToken, { foreignKey: "userId", as: "refreshTokens" });
-RefreshToken.belongsTo(User, { foreignKey: "userId", as: "user" });
+User.hasMany(RefreshToken, {
+  foreignKey: "userId",
+  as: "refreshTokensForUser",
+});
+RefreshToken.belongsTo(User, {
+  foreignKey: "userId",
+  as: "userOfRefreshToken",
+});
 
 // Venue ↔ Event
-Venue.hasMany(Event, { foreignKey: "venue_id", as: "events" });
-Event.belongsTo(Venue, { foreignKey: "venue_id", as: "venue" });
+Venue.hasMany(Event, { foreignKey: "venue_id", as: "eventsAtVenue" });
+Event.belongsTo(Venue, { foreignKey: "venue_id", as: "venueOfEvent" });
 
 // Department ↔ Event
-Department.hasMany(Event, { foreignKey: "department_id", as: "events" });
-Event.belongsTo(Department, { foreignKey: "department_id", as: "department" });
+Department.hasMany(Event, {
+  foreignKey: "department_id",
+  as: "eventsInDepartment",
+});
+Event.belongsTo(Department, {
+  foreignKey: "department_id",
+  as: "departmentOfEvent",
+});
 
 // Event ↔ Sponsor
-Event.hasMany(Sponsor, { foreignKey: "event_id", as: "sponsors" });
-Sponsor.belongsTo(Event, { foreignKey: "event_id", as: "event" });
+Event.hasMany(Sponsor, { foreignKey: "event_id", as: "sponsorsForEvent" });
+Sponsor.belongsTo(Event, { foreignKey: "event_id", as: "eventOfSponsor" });
 
 // Event ↔ Ticket
-Event.hasMany(Ticket, { foreignKey: "event_id", as: "tickets" });
-Ticket.belongsTo(Event, { foreignKey: "event_id", as: "event" });
+Event.hasMany(Ticket, { foreignKey: "event_id", as: "ticketsForEvent" });
+Ticket.belongsTo(Event, { foreignKey: "event_id", as: "eventOfTicket" });
 
 // User ↔ Volunteer
-User.hasMany(Volunteer, { foreignKey: "user_id", as: "volunteers" });
-Volunteer.belongsTo(User, { foreignKey: "user_id", as: "user" });
+User.hasMany(Volunteer, { foreignKey: "user_id", as: "volunteersOfUser" });
+Volunteer.belongsTo(User, { foreignKey: "user_id", as: "userOfVolunteer" });
 
-// Department ↔ Volunteer
+// Volunteer ↔ Department
 Department.hasMany(Volunteer, {
   foreignKey: "department_id",
-  as: "volunteers",
+  as: "volunteersInDepartment",
 });
 Volunteer.belongsTo(Department, {
   foreignKey: "department_id",
-  as: "department",
+  as: "departmentOfVolunteer",
 });
 
 // Event ↔ Volunteer
-Event.hasMany(Volunteer, { foreignKey: "event_id", as: "volunteers" });
-Volunteer.belongsTo(Event, { foreignKey: "event_id", as: "event" });
+Event.hasMany(Volunteer, { foreignKey: "event_id", as: "volunteersForEvent" });
+Volunteer.belongsTo(Event, { foreignKey: "event_id", as: "eventOfVolunteer" });
 
 // User ↔ Lead
-User.hasMany(Lead, { foreignKey: "user_id", as: "leads" });
-Lead.belongsTo(User, { foreignKey: "user_id", as: "user" });
+User.hasMany(Lead, { foreignKey: "user_id", as: "leadsOfUser" });
+Lead.belongsTo(User, { foreignKey: "user_id", as: "userOfLead" });
 
 // Requirement ↔ Lead
-Requirement.hasMany(Lead, { foreignKey: "req_id", as: "leads" });
-Lead.belongsTo(Requirement, { foreignKey: "req_id", as: "requirement" });
+Requirement.hasMany(Lead, { foreignKey: "req_id", as: "leadsForRequirement" });
+Lead.belongsTo(Requirement, { foreignKey: "req_id", as: "requirementOfLead" });
 
 // Event ↔ Lead
-Event.hasMany(Lead, { foreignKey: "event_id", as: "leads" });
-Lead.belongsTo(Event, { foreignKey: "event_id", as: "event" });
+Event.hasMany(Lead, { foreignKey: "event_id", as: "leadsForEvent" });
+Lead.belongsTo(Event, { foreignKey: "event_id", as: "eventOfLead" });
 
 // Event ↔ Participation
-Event.hasMany(Participation, { foreignKey: "event_id", as: "participations" });
-Participation.belongsTo(Event, { foreignKey: "event_id", as: "event" });
+Event.hasMany(Participation, {
+  foreignKey: "event_id",
+  as: "participationsForEvent",
+});
+Participation.belongsTo(Event, {
+  foreignKey: "event_id",
+  as: "eventOfParticipation",
+});
 
 // Department ↔ Requirement
 Department.hasMany(Requirement, {
   foreignKey: "department_id",
-  as: "requirements",
+  as: "requirementsInDepartment",
 });
 Requirement.belongsTo(Department, {
   foreignKey: "department_id",
-  as: "department",
+  as: "departmentOfRequirement",
 });
 
 // Participation ↔ Attendance
-Participation.hasMany(Attendance, { foreignKey: "part_id", as: "attendances" });
+Participation.hasMany(Attendance, {
+  foreignKey: "part_id",
+  as: "attendancesForParticipation",
+});
 Attendance.belongsTo(Participation, {
   foreignKey: "part_id",
-  as: "participation",
+  as: "participationOfAttendance",
 });
 
 // Lead ↔ Attendance
-Lead.hasMany(Attendance, { foreignKey: "lead_id", as: "attendances" });
-Attendance.belongsTo(Lead, { foreignKey: "lead_id", as: "lead" });
+Lead.hasMany(Attendance, { foreignKey: "lead_id", as: "attendancesForLead" });
+Attendance.belongsTo(Lead, { foreignKey: "lead_id", as: "leadOfAttendance" });
 
 // Volunteer ↔ Attendance
 Volunteer.hasMany(Attendance, {
   foreignKey: "volunteer_id",
-  as: "attendances",
+  as: "attendancesForVolunteer",
 });
 Attendance.belongsTo(Volunteer, {
   foreignKey: "volunteer_id",
-  as: "volunteer",
+  as: "volunteerOfAttendance",
 });
 
 // ====================
