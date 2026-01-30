@@ -37,7 +37,7 @@ exports.getDepartmentById = async (req, res) => {
   }
 };
 
-exports.updateDepatment = async (req, res) => {
+exports.updateDepartment = async (req, res) => {
   try {
     const { department_name, faculty_name } = req.body;
 

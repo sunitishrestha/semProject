@@ -4,7 +4,7 @@ const departmentController = require("../controllers/departmentController");
 const { authenticate } = require("../middleware/auth");
 
 router.post("/", authenticate, departmentController.createDepartment);
-router.get("/", authenticate, departmentController.getAllDepartments);
+router.get("/", authenticate, departmentController.getAllDepartment);
 router.get("/:id", authenticate, departmentController.getDepartmentById);
 router.get(
   "/:id/events",

@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const attendanceController = require("../controllers/attendanceController");
+const leadController = require("../controllers/leadController");
 const { authenticate } = require("../middleware/auth");
 
-router.post("/", authenticate, attendanceController.createLead);
-router.get("/:id/status", authenticate, attendanceController.getLeadByEvent);
-router.put("/:id", authenticate, attendanceController.updateLead);
+router.post("/", authenticate, leadController.createLead);
+router.get("/:eventId/status", authenticate, leadController.getLeadByEvent);
+router.put("/:id", authenticate, leadController.updateLead);
 
 module.exports = router;

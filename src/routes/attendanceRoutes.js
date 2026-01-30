@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const attendanceController = require("../controllers/attendanceController");
 const { authenticate } = require("../middleware/auth");
-const { route } = require("./auth");
 
-router.post("/", authenticate, attendanceController.marksAttandance);
+router.post("/", authenticate, attendanceController.markAttendance);
 router.get(
   "/participants/:eventId",
   authenticate,

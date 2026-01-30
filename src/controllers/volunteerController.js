@@ -9,7 +9,7 @@ exports.createVolunteer = async (req, res) => {
       user_id: req.user.id,
       department_id,
       event_id,
-      status: pending,
+      status: "pending",
     });
     res.status(201).json({
       success: true,
@@ -23,6 +23,7 @@ exports.createVolunteer = async (req, res) => {
 
 exports.getAllVolunteers = async (req, res) => {
   try {
+    const { eventId } = req.query;
     const volunteer = await Volunteer.findAll({
       where: { event_id: eventId },
       include: [

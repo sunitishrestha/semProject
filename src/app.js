@@ -11,7 +11,7 @@ const departmentRoutes = require("./routes/departmentRoutes");
 const venueRoutes = require("./routes/venueRoutes");
 const requirementRoutes = require("./routes/requirementRoutes");
 const volunteerRoutes = require("./routes/volunteerRoutes");
-const participationRoutes = require("./routes/participationRoutes");
+const participationRoutes = require("./routes/participantRoutes");
 const ticketRoutes = require("./routes/ticketRoutes");
 const sponsorRoutes = require("./routes/sponsorRoutes");
 

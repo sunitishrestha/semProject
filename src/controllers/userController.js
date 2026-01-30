@@ -1,4 +1,3 @@
-const { use } = require("react");
 const { User, profile } = require("../models");
 
 exports.getUserProfile = async (req, res) => {
@@ -62,7 +61,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-exports.deleteuser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
   try {
     if (req.user.role !== "admin") {
       return res.status(403).json({ message: "Access denied" });
